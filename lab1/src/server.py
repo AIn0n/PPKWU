@@ -3,6 +3,7 @@ import http.server
 import socketserver
 import os
 import time
+
 #print('source code for "http.server":', http.server.__file__)
 
 class web_server(http.server.SimpleHTTPRequestHandler):
@@ -25,6 +26,7 @@ class web_server(http.server.SimpleHTTPRequestHandler):
 PORT = 4080
 
 print(f'Starting: http://localhost:{PORT}')
-
+os.environ["TZ"] = "Europe/Warsaw"
+time.tzset()
 tcp_server = socketserver.TCPServer(("",PORT), web_server)
 tcp_server.serve_forever()
