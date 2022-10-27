@@ -7,8 +7,8 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     params = request.args.to_dict()
-    if params["cmd"] == "time":
+    if "cmd" in params and params["cmd"] == "time":
         return str(time.strftime("%H:%M:%S"))
-    if params["cmd"] == "rev":
-        return reversed(params["rev"])
+    if "cmd" in params and "str" in params and params["cmd"] == "rev":
+        return reversed(params["str"])
     return "Hello world!"
