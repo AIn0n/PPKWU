@@ -11,9 +11,9 @@ def hello():
     if "str" in params:
         string = params["str"]
         return json.dumps({
-            "lowercase": sum(1 for char in string if char.islower()),
-            "digits":    sum(1 for char in string if char.isdigit()),
-            "uppercase": sum(1 for char in string if char.isupper()),
+            "lowercase": sum(map(str.islower, string)),
+            "digits":    sum(map(str.isdigit, string)),
+            "uppercase": sum(map(str.isupper, string)),
             "special": sum(not char.isalpha() and not char.isdigit() for char in string)
         })
     return "no str parameter found"
