@@ -10,5 +10,9 @@ def hello():
     params = request.args.to_dict()
     if "str" in params:
         string = params["str"]
-        return json.dumps({"lowercase": sum(1 for char in string if char.islower())})
+        return json.dumps({
+            "lowercase": sum(1 for char in string if char.islower()),
+            "digits":    sum(1 for char in string if char.isdigit()),
+            "uppercase": sum(1 for char in string if char.isupper()),
+        })
     return "no str parameter found"
