@@ -11,10 +11,5 @@ def hello():
     if "num1" in params and "num2" in params:
         a = int(params["num1"])
         b = int(params["num2"])
-        return json.dumps({
-            "sum": a + b,
-            "sub": a - b,
-            "div": a // b,
-            "mod": a % b
-        })
+        return json.dumps({"sum": a + b, "sub": a - b, "div": a // b, "mod": a % b})
     return "no str parameter found"
