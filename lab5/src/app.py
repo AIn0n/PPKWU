@@ -14,4 +14,12 @@ def hello():
         result['digits'] = sum(map(str.isdigit, string))
         result['uppercase'] = sum(map(str.isupper, string))
         result['special'] = sum(not char.isalpha() and not char.isdigit() for char in string)
-    return jsonify(params)
+    if 'num1' in params and 'num2' in params:
+        a = params['num1']
+        b = params['num2']
+        result['sum'] = a + b
+        result['sub'] = a - b
+        result['mul'] = a * b
+        result['div'] = a // b
+        result['mod'] = a % b
+    return jsonify(result)
