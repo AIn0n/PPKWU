@@ -11,9 +11,9 @@ def hello():
     if 'str' in params:
         string = params['str']
         result['lowercase'] = sum(map(str.islower, string))
-        result['digits'] = sum(map(str.isdigit, string))
+        result['digits']    = sum(map(str.isdigit, string))
         result['uppercase'] = sum(map(str.isupper, string))
-        result['special'] = sum(not char.isalpha() and not char.isdigit() for char in string)
+        result['special']   = sum(not char.isalpha() and not char.isdigit() for char in string)
     if 'num1' in params and 'num2' in params:
         a = params['num1']
         b = params['num2']
