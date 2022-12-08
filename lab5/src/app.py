@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    params = request.args.to_dict()
+    params = request.get_json()
     if "num1" in params and "num2" in params:
         a = int(params["num1"])
         b = int(params["num2"])
