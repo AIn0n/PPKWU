@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import json
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['POST'])
 def hello():
     params = request.get_json()
-    if "num1" in params and "num2" in params:
-        a = int(params["num1"])
-        b = int(params["num2"])
-        return json.dumps({"sum": a + b, "sub": a - b, "div": a // b, "mod": a % b})
-    return "no str parameter found"
+    print(params)
+    return jsonify(params)
