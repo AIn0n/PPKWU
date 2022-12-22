@@ -11,6 +11,7 @@ def hello():
     params = et.fromstring(xml_data)
     string =  params.find("str")
     if string != None:
+        string = string.text
         result['lowercase'] = sum(map(str.islower, string))
         result['digits']    = sum(map(str.isdigit, string))
         result['uppercase'] = sum(map(str.isupper, string))
