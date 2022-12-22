@@ -18,7 +18,6 @@ def hello():
 
     num1 = params.find('num1')
     num2 = params.find('num2')
-    print(num1, num2)
     if num1 != None and num2 != None:
         a, b = int(num1.text), int(num2.text)
         result['sum'] = a + b
