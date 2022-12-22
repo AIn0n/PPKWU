@@ -4,6 +4,13 @@ import xml.etree.ElementTree as et
 
 app = Flask(__name__)
 
+def dict_to_xml(d):
+    root = et.Element('root')
+    for k, v in d.items():
+        elem = et.SubElement(root, k)
+        elem.text = str(v)
+    return et.tostring(root)
+
 @app.route("/", methods=['POST'])
 def hello():
     result = {}
@@ -26,4 +33,4 @@ def hello():
         result['mul'] = a * b
         result['div'] = a // b
         result['mod'] = a % b
-    return jsonify(result)
+    return dict_to_xml(result)
