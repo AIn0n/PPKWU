@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from flask import Flask, request, jsonify
-from lxml import etree
+from lxml import etree as et
 
 app = Flask(__name__)
 
@@ -8,8 +8,9 @@ app = Flask(__name__)
 def hello():
     result = {}
     xml_data = request.data
-    params = etree.fromstring(xml_data)
-    print(params)
+    print(request.data)
+    params = et.fromstring(xml_data)
+    print(et.tostring(params, pretty_print=True).decode("utf-8"))
 #    if 'str' in params:
 #        string = params['str']
 #        result['lowercase'] = sum(map(str.islower, string))
