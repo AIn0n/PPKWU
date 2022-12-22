@@ -8,14 +8,15 @@ app = Flask(__name__)
 def hello():
     result = {}
     xml_data = request.data
-    params = et.parse(xml_data).getroot()
-    print(params)
-#    if 'str' in params:
-#        string = params['str']
-#        result['lowercase'] = sum(map(str.islower, string))
-#        result['digits']    = sum(map(str.isdigit, string))
-#        result['uppercase'] = sum(map(str.isupper, string))
-#        result['special']   = sum(not char.isalpha() and not char.isdigit() for char in string)
+    params = et.fromstring(xml_data)
+    string =  params.find("str")
+    if string != None:
+        string = string.text
+        result['lowercase'] = sum(map(str.islower, string))
+        result['digits']    = sum(map(str.isdigit, string))
+        result['uppercase'] = sum(map(str.isupper, string))
+        result['special']   = sum(not char.isalpha() and not char.isdigit() for char in string)
+
 #    if 'num1' in params and 'num2' in params:
 #        a, b = params['num1'], params['num2']
 #        result['sum'] = a + b
